@@ -12,6 +12,7 @@ Ce lab ajoute un environnement de test réaliste autour de SigNoz en simulant **
 - Stack SigNoz principale : [`/root/Signoz/compose.yaml`](/root/Signoz/compose.yaml)
 - Stack de lab : [`/root/Signoz/lab/compose.yaml`](/root/Signoz/lab/compose.yaml)
 - Application simulée : [`/root/Signoz/lab/app/machine.py`](/root/Signoz/lab/app/machine.py)
+- Schéma d'architecture : [`/root/Signoz/docs/schema-architecture.md`](/root/Signoz/docs/schema-architecture.md)
 
 ## Architecture
 
