@@ -140,6 +140,35 @@ DCGM_FI_DEV_FB_USED
 DCGM_FI_DEV_GPU_TEMP
 ```
 
+## Dashboard 4 - Application Lab
+
+Panels recommandes :
+
+- total de requetes par service
+- total d'erreurs par service
+- latence moyenne par service
+- profondeur de file d'attente
+
+Requetes utiles :
+
+```promql
+sum by (service_name) (rate(lab_requests_total[5m]))
+```
+
+```promql
+sum by (service_name) (rate(lab_errors_total[5m]))
+```
+
+```promql
+histogram_quantile(0.95, sum by (service_name, le) (rate(lab_request_duration_ms_bucket[5m])))
+```
+
+```promql
+avg by (service_name) (lab_queue_depth)
+```
+
+Note : si les labels apparaissent sous la forme `service.name` (avec un point) plutot que `service_name` dans ton interface, ajuste le filtre en consequence.
+
 ## Alertes recommandees
 
 ## Alerte 1 - CPU hote elevee
@@ -190,6 +219,17 @@ Condition conseillee :
 
 - declencher si la valeur est `> 0`
 - evaluation sur les `5` dernieres minutes
+
+## Alerte 5 - Latence elevee billing-worker
+
+- nom : `Latence elevee billing-worker`
+- requete :
+
+```promql
+histogram_quantile(0.95, sum by (service_name, le) (rate(lab_request_duration_ms_bucket{service_name="billing-worker"}[5m])))
+```
+
+- condition : declencher si la valeur est `> 1000` (1 seconde)
 
 ## Comment les creer dans l'interface
 

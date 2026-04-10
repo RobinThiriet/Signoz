@@ -7,14 +7,28 @@ Ce lab ajoute un environnement de test réaliste autour de SigNoz en simulant **
 - des **métriques custom**
 - un scénario simple pour **tester des alertes**
 
+## Parcours d'onboarding (8 étapes)
+
+Ce lab couvre les 8 étapes de l'onboarding SigNoz :
+
+1. **Set up your workspace** — SigNoz lancé via `compose.yaml`
+2. **Add your first data source** — OTel Collector configuré et exposé sur `:4317` / `:4318`
+3. **Send your traces** — les 3 machines émettent des traces distribuées automatiquement
+4. **Send your metrics** — métriques custom (`lab_*`) + infrastructure (node-exporter, cAdvisor)
+5. **Send your logs** — les 3 machines émettent leurs logs en OTLP (voir section [Logs](#logs) ci-dessous)
+6. **Setup Alerts** — règles prêtes dans [`docs/dashboards-alertes.md`](dashboards-alertes.md)
+7. **Setup Saved Views** — vues recommandées dans [`docs/vues-sauvegardees.md`](vues-sauvegardees.md)
+8. **Setup Dashboards** — dashboards à créer dans [`docs/dashboards-alertes.md`](dashboards-alertes.md)
+
 ## Fichiers
 
-- Stack SigNoz principale : [`/root/Signoz/compose.yaml`](/root/Signoz/compose.yaml)
-- Extension GPU optionnelle : [`/root/Signoz/compose.gpu.yaml`](/root/Signoz/compose.gpu.yaml)
-- Stack de lab : [`/root/Signoz/lab/compose.yaml`](/root/Signoz/lab/compose.yaml)
-- Application simulée : [`/root/Signoz/lab/app/machine.py`](/root/Signoz/lab/app/machine.py)
-- Schéma d'architecture : [`/root/Signoz/docs/schema-architecture.md`](/root/Signoz/docs/schema-architecture.md)
-- Dashboards et alertes : [`/root/Signoz/docs/dashboards-alertes.md`](/root/Signoz/docs/dashboards-alertes.md)
+- Stack SigNoz principale : [`compose.yaml`](../compose.yaml)
+- Extension GPU optionnelle : [`compose.gpu.yaml`](../compose.gpu.yaml)
+- Stack de lab : [`lab/compose.yaml`](../lab/compose.yaml)
+- Application simulée : [`lab/app/machine.py`](../lab/app/machine.py)
+- Schéma d'architecture : [`docs/schema-architecture.md`](schema-architecture.md)
+- Dashboards et alertes : [`docs/dashboards-alertes.md`](dashboards-alertes.md)
+- Vues sauvegardées : [`docs/vues-sauvegardees.md`](vues-sauvegardees.md)
 
 ## Architecture
 
@@ -150,15 +164,34 @@ Les spans en erreur apparaîtront surtout côté `billing-worker`, ce qui rend l
 
 ### Logs
 
-Chaque machine pousse ses logs directement en OTLP.
+Chaque machine pousse ses logs directement en OTLP vers le collecteur SigNoz. Aucune configuration supplémentaire n’est nécessaire.
 
-Exemples de recherches utiles dans l’explorateur de logs :
+Pour visualiser les logs dans SigNoz :
+
+1. Ouvre `http://localhost:8080`
+2. Va dans `Logs` → `Logs Explorer`
+3. Utilise les filtres ci-dessous pour naviguer
+
+Attributs disponibles sur chaque log :
+
+| Attribut                   | Valeur exemple          |
+|----------------------------|-------------------------|
+| `service.name`             | `edge-gateway`          |
+| `service.namespace`        | `signoz-lab`            |
+| `deployment.environment`   | `test`                  |
+| `lab.machine`              | `machine-1`             |
+| `severity_text`            | `INFO`, `ERROR`         |
+
+Exemples de recherches utiles :
 
 - `service.name = "edge-gateway"`
 - `service.name = "orders-api"`
 - `service.name = "billing-worker"`
+- `severity_text = "ERROR"`
 - `body CONTAINS "request failed"`
 - `body CONTAINS "write failed"`
+
+Pour aller plus loin, crée des vues sauvegardées depuis ces filtres — voir [`docs/vues-sauvegardees.md`](/root/Signoz/docs/vues-sauvegardees.md).
 
 ### Métriques
 

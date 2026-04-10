@@ -11,11 +11,11 @@ Il a ete prepare pour :
 
 ## Contenu du depot
 
-- [compose.yaml](/root/Signoz/compose.yaml) : stack principale SigNoz
-- [LOCAL-SETUP.md](/root/Signoz/LOCAL-SETUP.md) : guide rapide local
-- [lab/compose.yaml](/root/Signoz/lab/compose.yaml) : lab de demonstration
-- [lab/app/machine.py](/root/Signoz/lab/app/machine.py) : application simulant les 3 machines
-- [docs/signoz-lab.md](/root/Signoz/docs/signoz-lab.md) : documentation detaillee du lab
+- [compose.yaml](compose.yaml) : stack principale SigNoz
+- [LOCAL-SETUP.md](LOCAL-SETUP.md) : guide rapide local
+- [lab/compose.yaml](lab/compose.yaml) : lab de demonstration
+- [lab/app/machine.py](lab/app/machine.py) : application simulant les 3 machines
+- [docs/signoz-lab.md](docs/signoz-lab.md) : documentation detaillee du lab
 - `deploy/common/clickhouse/` : configuration minimale ClickHouse
 - `deploy/docker/otel-collector-config.yaml` : configuration du collecteur OTLP
 
@@ -236,10 +236,11 @@ docker compose down
 
 ## Documentation
 
-- guide local rapide : [LOCAL-SETUP.md](/root/Signoz/LOCAL-SETUP.md)
-- documentation du lab et schema reseau : [docs/signoz-lab.md](/root/Signoz/docs/signoz-lab.md)
-- schema d'architecture : [docs/schema-architecture.md](/root/Signoz/docs/schema-architecture.md)
-- dashboards et alertes : [docs/dashboards-alertes.md](/root/Signoz/docs/dashboards-alertes.md)
+- guide local rapide : [LOCAL-SETUP.md](LOCAL-SETUP.md)
+- documentation du lab et schema reseau : [docs/signoz-lab.md](docs/signoz-lab.md)
+- schema d'architecture : [docs/schema-architecture.md](docs/schema-architecture.md)
+- dashboards et alertes : [docs/dashboards-alertes.md](docs/dashboards-alertes.md)
+- vues sauvegardees : [docs/vues-sauvegardees.md](docs/vues-sauvegardees.md)
 
 ## Objectif de cette version
 

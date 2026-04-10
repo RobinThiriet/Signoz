@@ -65,8 +65,9 @@ OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
 
 La stack de test avec trois machines simulees est documentee ici :
 
-- `/root/Signoz/docs/signoz-lab.md`
-- `/root/Signoz/docs/dashboards-alertes.md`
+- [docs/signoz-lab.md](docs/signoz-lab.md)
+- [docs/dashboards-alertes.md](docs/dashboards-alertes.md)
+- [docs/vues-sauvegardees.md](docs/vues-sauvegardees.md)
 
 Demarrage :
 
