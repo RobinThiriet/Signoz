@@ -73,6 +73,18 @@ docker compose ps
 docker compose -f lab/compose.yaml ps
 ```
 
+### 4. Première connexion à SigNoz
+
+Cette instance n'a pas d'identifiants par défaut.
+
+Au premier accès sur `http://localhost:8080` :
+
+1. crée le compte administrateur
+2. définis l'adresse email de connexion
+3. définis le mot de passe
+
+Ces informations deviennent ensuite tes identifiants de connexion.
+
 ## Réseau
 
 ### Réseau `signoz-net`
@@ -82,6 +94,38 @@ Réseau partagé entre SigNoz et les 3 machines. Il permet l’envoi OTLP vers `
 ### Réseau `signoz-lab-net`
 
 Réseau interne du scénario applicatif. Il porte uniquement les appels HTTP entre `machine-1`, `machine-2` et `machine-3`.
+
+## Comment raccorder une nouvelle application ou machine
+
+Le principe est toujours le même :
+
+1. instrumenter l'application avec OpenTelemetry
+2. envoyer la télémétrie vers le collecteur SigNoz
+3. vérifier l'apparition du service dans l'interface
+
+### Depuis la machine hôte
+
+- OTLP gRPC : `localhost:4317`
+- OTLP HTTP : `http://localhost:4318`
+
+### Depuis un conteneur Docker sur `signoz-net`
+
+- OTLP gRPC : `signoz-otel-collector:4317`
+- OTLP HTTP : `http://signoz-otel-collector:4318`
+
+### Depuis une machine distante
+
+- utiliser l'IP ou le DNS du serveur SigNoz
+- ouvrir les ports `4317` ou `4318` si nécessaire
+
+### Variables d'environnement typiques
+
+```bash
+export OTEL_SERVICE_NAME=mon-service
+export OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318
+export OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
+export OTEL_RESOURCE_ATTRIBUTES=service.name=mon-service,deployment.environment=demo
+```
 
 ## Ports exposés
 

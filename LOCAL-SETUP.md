@@ -22,12 +22,43 @@ docker compose down
 - OTLP gRPC : `localhost:4317`
 - OTLP HTTP : `http://localhost:4318`
 
+## Premiere connexion
+
+Il n'y a pas d'identifiants predefinis.
+
+Au premier acces sur `http://localhost:8080`, tu dois :
+
+1. creer le compte administrateur
+2. choisir ton email
+3. choisir ton mot de passe
+
+Ce seront ensuite tes identifiants de connexion.
+
 ## Verification rapide
 
 ```bash
 cd /root/Signoz
 docker compose ps
 curl http://localhost:8080/api/v1/health
+```
+
+## Connecter une autre application
+
+### Application sur la machine hote
+
+```bash
+export OTEL_SERVICE_NAME=mon-application
+export OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318
+export OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
+```
+
+### Application dans Docker
+
+Si elle partage le reseau `signoz-net` :
+
+```bash
+OTEL_EXPORTER_OTLP_ENDPOINT=http://signoz-otel-collector:4318
+OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
 ```
 
 ## Lab de test 3 machines
