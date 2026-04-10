@@ -134,12 +134,12 @@ Ces métriques sont enrichies avec :
 
 Après ton premier login SigNoz, crée une alerte sur la hausse d’erreurs du lab.
 
-### Option 1 : via l’UI
+### Option 1 : via l'interface
 
 1. Ouvre `http://localhost:8080`
 2. Termine l’initialisation du premier compte si nécessaire
-3. Va dans `Alerts`
-4. Crée une alerte métrique basée sur `lab_errors_total`
+3. Va dans `Alertes`
+4. Cree une alerte metrique basee sur `lab_errors_total`
 5. Filtre sur `service.name = billing-worker`
 6. Définis un seuil du type :
    - alerte si la valeur est `> 0` sur les dernières minutes

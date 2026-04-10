@@ -1,4 +1,4 @@
-# SigNoz local
+# Installation locale de SigNoz
 
 Cette installation se lance directement depuis `/root/Signoz`.
 
@@ -18,9 +18,17 @@ docker compose down
 
 ## Acces
 
-- UI: http://localhost:8080
-- OTLP gRPC: `localhost:4317`
-- OTLP HTTP: `http://localhost:4318`
+- interface SigNoz : http://localhost:8080
+- OTLP gRPC : `localhost:4317`
+- OTLP HTTP : `http://localhost:4318`
+
+## Verification rapide
+
+```bash
+cd /root/Signoz
+docker compose ps
+curl http://localhost:8080/api/v1/health
+```
 
 ## Lab de test 3 machines
 
