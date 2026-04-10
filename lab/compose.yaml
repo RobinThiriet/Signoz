@@ -1,0 +1,73 @@
+services:
+  machine-1:
+    build:
+      context: ./app
+    container_name: signoz-lab-machine-1
+    environment:
+      MACHINE_NAME: machine-1
+      SERVICE_NAME: edge-gateway
+      SERVICE_NAMESPACE: signoz-lab
+      DEPLOYMENT_ENVIRONMENT: test
+      PORT: "8000"
+      OTLP_ENDPOINT: http://signoz-otel-collector:4318
+      DOWNSTREAM_URL: http://machine-2:8000
+      TRAFFIC_TARGET_URL: http://machine-2:8000/api/process
+      TRAFFIC_INTERVAL_SECONDS: "3"
+      FAILURE_RATE: "0.03"
+      BASE_LATENCY_MS: "80"
+    ports:
+      - "18081:8000"
+    networks:
+      - lab-net
+      - signoz-net
+    restart: unless-stopped
+
+  machine-2:
+    build:
+      context: ./app
+    container_name: signoz-lab-machine-2
+    environment:
+      MACHINE_NAME: machine-2
+      SERVICE_NAME: orders-api
+      SERVICE_NAMESPACE: signoz-lab
+      DEPLOYMENT_ENVIRONMENT: test
+      PORT: "8000"
+      OTLP_ENDPOINT: http://signoz-otel-collector:4318
+      DOWNSTREAM_URL: http://machine-3:8000
+      TRAFFIC_INTERVAL_SECONDS: "0"
+      FAILURE_RATE: "0.08"
+      BASE_LATENCY_MS: "130"
+    ports:
+      - "18082:8000"
+    networks:
+      - lab-net
+      - signoz-net
+    restart: unless-stopped
+
+  machine-3:
+    build:
+      context: ./app
+    container_name: signoz-lab-machine-3
+    environment:
+      MACHINE_NAME: machine-3
+      SERVICE_NAME: billing-worker
+      SERVICE_NAMESPACE: signoz-lab
+      DEPLOYMENT_ENVIRONMENT: test
+      PORT: "8000"
+      OTLP_ENDPOINT: http://signoz-otel-collector:4318
+      TRAFFIC_INTERVAL_SECONDS: "0"
+      FAILURE_RATE: "0.22"
+      BASE_LATENCY_MS: "220"
+    ports:
+      - "18083:8000"
+    networks:
+      - lab-net
+      - signoz-net
+    restart: unless-stopped
+
+networks:
+  lab-net:
+    name: signoz-lab-net
+  signoz-net:
+    external: true
+    name: signoz-net
