@@ -23,7 +23,6 @@ Ce lab couvre les 8 étapes de l'onboarding SigNoz :
 ## Fichiers
 
 - Stack SigNoz principale : [`compose.yaml`](../compose.yaml)
-- Extension GPU optionnelle : [`compose.gpu.yaml`](../compose.gpu.yaml)
 - Stack de lab : [`lab/compose.yaml`](../lab/compose.yaml)
 - Application simulée : [`lab/app/machine.py`](../lab/app/machine.py)
 - Schéma d'architecture : [`docs/schema-architecture.md`](schema-architecture.md)
@@ -219,12 +218,6 @@ La stack principale remonte aussi les metriques d'infrastructure :
 - disque hote
 - reseau hote
 - metriques des conteneurs Docker
-
-Et si le GPU NVIDIA est active :
-
-- utilisation GPU
-- memoire GPU
-- temperature GPU
 
 ## Scénario d’alerte recommandé
 

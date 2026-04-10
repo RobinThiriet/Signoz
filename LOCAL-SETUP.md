@@ -18,7 +18,7 @@ docker compose down
 
 ## Acces
 
-- interface SigNoz : http://localhost:8080
+- interface SigNoz : [http://localhost:8080](http://localhost:8080)
 - OTLP gRPC : `localhost:4317`
 - OTLP HTTP : `http://localhost:4318`
 
@@ -91,15 +91,6 @@ Pour relancer avec cette supervision :
 ```bash
 cd /root/Signoz
 docker compose up -d
-```
-
-## Supervision GPU optionnelle
-
-Si la machine a un GPU NVIDIA :
-
-```bash
-cd /root/Signoz
-docker compose -f compose.yaml -f compose.gpu.yaml up -d
 ```
 
 ## Volumes Docker
