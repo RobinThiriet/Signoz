@@ -336,30 +336,9 @@ We have published benchmarks comparing Loki with SigNoz. Check it out [here](htt
 <br /><br />
 
 
-## Contributing
-
-We ❤️ contributions big or small. Please read [CONTRIBUTING.md](CONTRIBUTING.md) to get started with making contributions to SigNoz.
-
-Not sure how to get started? Just ping us on `#contributing` in our [slack community](https://signoz.io/slack)
-
-<br /><br />
-
-
 ## Documentation
 
 You can find docs at https://signoz.io/docs/. If you need any clarification or find something missing, feel free to raise a GitHub issue with the label `documentation` or reach out to us at the community slack channel.
 
 <br /><br />
 
-
-## Community
-
-Join the [slack community](https://signoz.io/slack) to know more about distributed tracing, observability, or SigNoz and to connect with other users and contributors.
-
-If you have any ideas, questions, or any feedback, please share on our [Github Discussions](https://github.com/SigNoz/signoz/discussions)
-
-As always, thanks to our amazing contributors!
-
-<a href="https://github.com/signoz/signoz/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=signoz/signoz" />
-</a>
