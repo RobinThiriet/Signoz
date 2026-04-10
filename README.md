@@ -241,6 +241,7 @@ docker compose down
 - schema d'architecture : [docs/schema-architecture.md](docs/schema-architecture.md)
 - dashboards et alertes : [docs/dashboards-alertes.md](docs/dashboards-alertes.md)
 - vues sauvegardees : [docs/vues-sauvegardees.md](docs/vues-sauvegardees.md)
+- guide creation manuelle (dashboards, alertes, vues) : [docs/guide-ui.md](docs/guide-ui.md)
 
 ## Objectif de cette version
 
