@@ -37,13 +37,7 @@ receivers:
             labels:
               job_name: cadvisor
               monitor_scope: containers
-        - job_name: dcgm-exporter
-          static_configs:
-          - targets:
-              - dcgm-exporter:9400
-            labels:
-              job_name: dcgm-exporter
-              monitor_scope: gpu
+
 processors:
   batch:
     send_batch_size: 10000
