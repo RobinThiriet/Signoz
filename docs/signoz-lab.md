@@ -28,6 +28,7 @@ Ce lab couvre les 8 étapes de l'onboarding SigNoz :
 - Schéma d'architecture : [`docs/schema-architecture.md`](schema-architecture.md)
 - Dashboards et alertes : [`docs/dashboards-alertes.md`](dashboards-alertes.md)
 - Vues sauvegardées : [`docs/vues-sauvegardees.md`](vues-sauvegardees.md)
+- Guide creation manuelle UI : [`docs/guide-ui.md`](guide-ui.md)
 
 ## Architecture
 
@@ -190,7 +191,7 @@ Exemples de recherches utiles :
 - `body CONTAINS "request failed"`
 - `body CONTAINS "write failed"`
 
-Pour aller plus loin, crée des vues sauvegardées depuis ces filtres — voir [`docs/vues-sauvegardees.md`](/root/Signoz/docs/vues-sauvegardees.md).
+Pour aller plus loin, crée des vues sauvegardées depuis ces filtres — voir [`vues-sauvegardees.md`](vues-sauvegardees.md).
 
 ### Métriques
 

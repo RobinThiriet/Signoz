@@ -68,6 +68,7 @@ La stack de test avec trois machines simulees est documentee ici :
 - [docs/signoz-lab.md](docs/signoz-lab.md)
 - [docs/dashboards-alertes.md](docs/dashboards-alertes.md)
 - [docs/vues-sauvegardees.md](docs/vues-sauvegardees.md)
+- [docs/guide-ui.md](docs/guide-ui.md)
 
 Demarrage :
 

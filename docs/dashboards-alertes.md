@@ -118,6 +118,8 @@ Note : si les labels apparaissent sous la forme `service.name` (avec un point) p
 
 ## Alertes recommandees
 
+Chaque alerte est basee sur une requete PromQL. Cree-les dans SigNoz via `Alerts` → `New Alert Rule` → mode PromQL.
+
 ## Alerte 1 - CPU hote elevee
 
 - nom : `CPU hote elevee`

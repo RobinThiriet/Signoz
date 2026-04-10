@@ -127,23 +127,7 @@ avg by (service_name) (lab_queue_depth)
 
 ### Vues recommandées
 
-**Logs :**
-
-| Nom | Filtre |
-|-----|--------|
-| Erreurs - toutes machines | `severity_text = ERROR` |
-| Logs - edge-gateway | `service.name = edge-gateway` |
-| Logs - orders-api | `service.name = orders-api` |
-| Logs - billing-worker | `service.name = billing-worker` |
-| Requetes echouees | `body contains failed` |
-
-**Traces :**
-
-| Nom | Filtre |
-|-----|--------|
-| Traces en erreur | `Status = error` |
-| Traces - billing-worker | `service.name = billing-worker` |
-| Traces lentes > 500ms | `Duration > 500ms` |
+La liste complète des vues à créer (logs et traces) est dans [`vues-sauvegardees.md`](vues-sauvegardees.md).
 
 ---
 
