@@ -152,6 +152,30 @@ services:
       - "4317:4317"
       - "4318:4318"
 
+  node-exporter:
+    !!merge <<: *common
+    image: quay.io/prometheus/node-exporter:v1.9.1
+    container_name: signoz-node-exporter
+    command:
+      - --path.rootfs=/host
+      - --collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)
+    pid: host
+    volumes:
+      - /:/host:ro
+
+  cadvisor:
+    !!merge <<: *common
+    image: gcr.io/cadvisor/cadvisor:v0.49.1
+    container_name: signoz-cadvisor
+    privileged: true
+    devices:
+      - /dev/kmsg:/dev/kmsg
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker:/var/lib/docker:ro
+
   signoz-telemetrystore-migrator:
     !!merge <<: *db-depend
     image: signoz/signoz-otel-collector:${OTELCOL_TAG:-v0.144.2}

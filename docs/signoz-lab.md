@@ -10,9 +10,11 @@ Ce lab ajoute un environnement de test réaliste autour de SigNoz en simulant **
 ## Fichiers
 
 - Stack SigNoz principale : [`/root/Signoz/compose.yaml`](/root/Signoz/compose.yaml)
+- Extension GPU optionnelle : [`/root/Signoz/compose.gpu.yaml`](/root/Signoz/compose.gpu.yaml)
 - Stack de lab : [`/root/Signoz/lab/compose.yaml`](/root/Signoz/lab/compose.yaml)
 - Application simulée : [`/root/Signoz/lab/app/machine.py`](/root/Signoz/lab/app/machine.py)
 - Schéma d'architecture : [`/root/Signoz/docs/schema-architecture.md`](/root/Signoz/docs/schema-architecture.md)
+- Dashboards et alertes : [`/root/Signoz/docs/dashboards-alertes.md`](/root/Signoz/docs/dashboards-alertes.md)
 
 ## Architecture
 
@@ -174,6 +176,22 @@ Ces métriques sont enrichies avec :
 - `service.namespace`
 - `deployment.environment`
 - `machine`
+
+### Infrastructure
+
+La stack principale remonte aussi les metriques d'infrastructure :
+
+- CPU hote
+- memoire hote
+- disque hote
+- reseau hote
+- metriques des conteneurs Docker
+
+Et si le GPU NVIDIA est active :
+
+- utilisation GPU
+- memoire GPU
+- temperature GPU
 
 ## Scénario d’alerte recommandé
 

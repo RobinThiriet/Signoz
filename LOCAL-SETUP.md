@@ -66,12 +66,39 @@ OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
 La stack de test avec trois machines simulees est documentee ici :
 
 - `/root/Signoz/docs/signoz-lab.md`
+- `/root/Signoz/docs/dashboards-alertes.md`
 
 Demarrage :
 
 ```bash
 cd /root/Signoz
 docker compose -f lab/compose.yaml up -d --build
+```
+
+## Supervision infrastructure
+
+La stack principale remonte aussi :
+
+- CPU
+- memoire
+- disque
+- reseau
+- metriques conteneurs Docker
+
+Pour relancer avec cette supervision :
+
+```bash
+cd /root/Signoz
+docker compose up -d
+```
+
+## Supervision GPU optionnelle
+
+Si la machine a un GPU NVIDIA :
+
+```bash
+cd /root/Signoz
+docker compose -f compose.yaml -f compose.gpu.yaml up -d
 ```
 
 ## Volumes Docker

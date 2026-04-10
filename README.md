@@ -239,6 +239,7 @@ docker compose down
 - guide local rapide : [LOCAL-SETUP.md](/root/Signoz/LOCAL-SETUP.md)
 - documentation du lab et schema reseau : [docs/signoz-lab.md](/root/Signoz/docs/signoz-lab.md)
 - schema d'architecture : [docs/schema-architecture.md](/root/Signoz/docs/schema-architecture.md)
+- dashboards et alertes : [docs/dashboards-alertes.md](/root/Signoz/docs/dashboards-alertes.md)
 
 ## Objectif de cette version
 
